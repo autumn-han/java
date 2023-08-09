@@ -6,11 +6,11 @@ public class TestKiosk {
 		
 //		instantiating Kiosk and adding menu items
 		CoffeeKiosk mainKiosk = new CoffeeKiosk();
-		mainKiosk.addMenuItem("banana", 2.0, 0);
-		mainKiosk.addMenuItem("coffee", 1.50, 1);
-		mainKiosk.addMenuItem("latte", 4.50, 2);
-		mainKiosk.addMenuItem("cappuccino", 3.00, 3);
-		mainKiosk.addMenuItem("muffin", 4.00, 4);
+		mainKiosk.addMenuItem("banana", 2.0);
+		mainKiosk.addMenuItem("coffee", 1.50);
+		mainKiosk.addMenuItem("latte", 4.50);
+		mainKiosk.addMenuItem("cappuccino", 3.00);
+		mainKiosk.addMenuItem("muffin", 4.00);
 		
 //		displaying menu items
 		mainKiosk.displayMenu();

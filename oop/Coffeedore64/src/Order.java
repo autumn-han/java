@@ -22,19 +22,19 @@ public class Order {
 		this.name = name;
 	}
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	public void isReady(boolean status) {
 		this.ready = status;
 	}
 	public boolean isReady() {
-		return ready;
+		return this.ready;
 	}
 	public void setArray(ArrayList<Item> items) {
 		this.items = items;
 	}
 	public ArrayList<Item> getArray() {
-		return items;
+		return this.items;
 	}
 //	class methods
 	public void addItem(Item item) {

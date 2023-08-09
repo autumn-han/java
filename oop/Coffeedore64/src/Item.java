@@ -5,10 +5,11 @@ public class Item {
 	private String name;
 	private double price;
 	private int index;
-	public Item(String name, double price, int index) {
+	
+//	constructor method
+	public Item(String name, double price) {
 		this.name = name;
 		this.price = price;
-		this.index = index;
 	}
 	
 //	getters and setters
@@ -16,18 +17,18 @@ public class Item {
 		this.name = name;
 	}
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	public void setPrice(double price) {
 		this.price = price;
 	}
 	public double getPrice() {
-		return price;
+		return this.price;
 	}
 	public void setIndex(int index) {
 		this.index = index;
 	}
 	public int getIndex() {
-		return index;
+		return this.index;
 	}
 }

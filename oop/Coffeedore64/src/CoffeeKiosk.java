@@ -13,9 +13,10 @@ public class CoffeeKiosk {
 	}
 	
 //	class methods
-	public void addMenuItem(String itemName, double price, int index) {
-		Item newItem = new Item(itemName, price, index);
-		this.menu.add(index, newItem);
+	public void addMenuItem(String itemName, double price) {
+		Item newItem = new Item(itemName, price);
+		this.menu.add(newItem);
+		newItem.setIndex(menu.indexOf(newItem));
 	}
 	public void displayMenu() {
 		for (int i = 0; i < this.menu.size(); i++) {
@@ -31,7 +32,13 @@ public class CoffeeKiosk {
 		System.out.println("Please enter a menu item index or q to quit");
 		String itemNumber = System.console().readLine();
 		while (!itemNumber.equals("q")) {
-			nOrder.items.add(this.menu.get(Integer.parseInt(itemNumber)));
+			try{
+                nOrder.addItem(menu.get(Integer.parseInt(itemNumber)));
+            }catch(IndexOutOfBoundsException i){
+                System.out.println("Invalid selection");
+            }catch(NumberFormatException n){
+                System.out.println("Invalid selection");
+            }
 		}
 		
 		System.out.println("Would you like to add anything else to your order? If not, hit q to quit");
