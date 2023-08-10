@@ -6,9 +6,31 @@ import java.util.Date;
 public class Physician extends User implements HIPAACompliantUser {
 	private ArrayList<String> patientNotes;
 	
-	// TO DO: Constructor that takes an IDcopy
-    // TO DO: Implement HIPAACompliantUser!
+//	constructor method
+	public Physician(int id) {
+		this.id = id;
+	}
 	
+//	HIPAACompliantUser abstract methods
+	public boolean assignPin(int pin) {
+		int length = String.valueOf(pin).length();
+		if (length == 4) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	public boolean accessAuthorized(Integer confirmedID) {
+		if (this.id == confirmedID) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+//	class methods
 	public void newPatientNotes(String notes, String patientName, Date date) {
         String report = String.format(
             "Datetime Submitted: %s \n", date);
@@ -18,5 +40,8 @@ public class Physician extends User implements HIPAACompliantUser {
         this.patientNotes.add(report);
     }
 	
-    // TO DO: Setters & Getters
+//  getters and setters
+	public ArrayList<String> getNotes() {
+		return patientNotes;
+	}
 }

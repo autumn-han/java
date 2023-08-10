@@ -6,7 +6,7 @@ import java.util.Date;
 public class AdminUser extends User implements HIPAACompliantUser, HIPAACompliantAdmin {
 	private Integer employeeID;
     private String role;
-    private ArrayList<String> reportSecurityIncidents();
+    private ArrayList<String> securityIncidents = new ArrayList<>();
 
 //  constructor method
     public AdminUser(Integer id, String role) {
@@ -26,16 +26,19 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     }
     public boolean accessAuthorized(Integer confirmedAuthID) {
     	if (this.employeeID == confirmedAuthID) {
-    		authIncident();
+    		newIncident("");
     		return true;
     	}
     	else {
+    		authIncident();
     		return false;
     	}
     }
     
 //    HIPAACompliantAdmin abstract methods
-    public 
+    public ArrayList<String> reportSecurityIncidents() {
+    	return securityIncidents;
+    }
     
 //    AdminUser methods
     public void newIncident(String notes) {
@@ -43,16 +46,28 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
             "Datetime Submitted: %s \n,  Reported By ID: %s\n Notes: %s \n", 
             new Date(), this.employeeID, notes
         );
-        reportSecurityIncidents.add(report);
+        securityIncidents.add(report);
     } 
     public void authIncident() {
         String report = String.format(
             "Datetime Submitted: %s \n,  ID: %s\n Notes: %s \n", 
-            new Date(), this.id, "AUTHORIZATION ATTEMPT FAILED FOR THIS USER"
+            new Date(), this.employeeID, "AUTHORIZATION ATTEMPT FAILED FOR THIS USER"
         );
-        reportSecurityIncidents.add(report);
+        securityIncidents.add(report);
     }
+ 
     
 //    getters and setters
-    
+    public Integer getID() {
+    	return this.employeeID;
+    }
+    public void setID(Integer newID) {
+    	this.employeeID = newID;
+    }
+    public String getRole() {
+    	return this.role;
+    }
+    public void setRole(String newRole) {
+    	this.role = newRole;
+    }
 }
