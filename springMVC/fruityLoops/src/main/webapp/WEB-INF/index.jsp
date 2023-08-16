@@ -5,11 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8"/>
+<!-- <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" /> -->
+<!-- <link rel="stylesheet" type="text/css" href="/css/style.css" /> -->
 <title>Fruity Loops</title>
 </head>
 <body>
 	<h3>Fruit Store</h3>
-	<table>
+	<table class="table">
 		<tbody>
 			<tr>
 				<th>Name</th>
