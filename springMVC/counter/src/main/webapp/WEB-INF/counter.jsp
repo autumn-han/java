@@ -9,6 +9,8 @@
 </head>
 <body>
 	<h1>You have visited your server: <c:out value="${count}" /> time(s)</h1>
-	<a href="/your_server">Test Another Visit?</a>
+	<p><a href="/your_server">Test another visit to the welcome page?</a></p>
+	<p><a href="/your_server/count_by_two">Want to increase the count by two?</a></p>
+	<p><a href="/reset"><button>Clear Count</button></a></p>
 </body>
 </html>

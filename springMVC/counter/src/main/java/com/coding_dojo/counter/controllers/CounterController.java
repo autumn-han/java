@@ -25,4 +25,25 @@ public class CounterController {
 		session.getAttribute("count");
 		return "counter.jsp";
 	}
+	@RequestMapping("/your_server/count_by_two")
+	public String countByTwo(HttpSession session) {
+		if (session.getAttribute("count") == null) {
+			count += 2;
+			session.setAttribute("count", count);
+		}
+		else {
+			count += 2;
+			session.setAttribute("count", count);
+		}
+		return "countByTwo.jsp";
+	}
+	@RequestMapping("/reset")
+	public String clear(HttpSession session) {
+		count = 0;
+		session.setAttribute("count", count);
+		return "counter.jsp";
+	}
 }
+
+// 1. why does int count have to be global within the controller instead of within any one of the routes?
+// 2. why is it that setting count to 0 and then setting the attribute "count" to count works, but I can't just write ("count", 0)?
