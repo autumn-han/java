@@ -9,5 +9,6 @@
 </head>
 <body>
 	<h1>Welcome, User!</h1>
+	<a href="/your_server/counter">Go to Counter</a>
 </body>
 </html>
