@@ -26,8 +26,6 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
-
-
 	    <dependency>
 	        <groupId>jakarta.servlet.jsp.jstl</groupId>
 	        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
@@ -47,7 +45,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
