@@ -14,6 +14,7 @@
 	<div>
 		<div>
 			<form action="/submit" method="post">
+				<input type="hidden" name="farm" />
 				<p>Farm</p>
 				<p>(earns 10-20 gold)</p>
 				<button>Find Gold</button>
@@ -21,6 +22,7 @@
 		</div>
 		<div>
 			<form action="/submit" method="post">
+				<input type="hidden" name="cave" />
 				<p>Cave</p>
 				<p>(earns 5-10 gold)</p>
 				<button>Find Gold</button>
@@ -28,6 +30,7 @@
 		</div>
 		<div>
 			<form action="/submit" method="post">
+				<input type="hidden" name="house" />
 				<p>House</p>
 				<p>(earns 2-5 gold)</p>
 				<button>Find Gold</button>
@@ -35,6 +38,7 @@
 		</div>
 		<div>
 			<form action="/submit" method="post">
+				<input type="hidden" name="quest" />
 				<p>Quest</p>
 				<p>(earns/takes 0-50 gold)</p>
 				<button>Find Gold</button>
@@ -44,7 +48,9 @@
 	<div>
 		<p>Activities: </p>
 		<div>
-			<!-- put in array of activities and loop through -->
+			<c:forEach var="activity" items="${activities}">
+				<p><c:out value="${activity}" /></p>
+			</c:forEach>
 		</div>
 	</div>
 </body>
