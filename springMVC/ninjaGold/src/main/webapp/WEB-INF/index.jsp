@@ -12,6 +12,9 @@
 		<h2>Your Gold: <c:out value="${gold}" /></h2>
 	</div>
 	<div>
+		<a href="/reset"><button>Reset</button></a>
+	</div>
+	<div>
 		<div>
 			<form action="/submit" method="post">
 				<input type="hidden" name="farm" />
@@ -40,8 +43,16 @@
 			<form action="/submit" method="post">
 				<input type="hidden" name="quest" />
 				<p>Quest</p>
-				<p>(earns/takes 0-50 gold)</p>
-				<button>Find Gold</button>
+				<p>(earns/loses 0-50 gold)</p>
+				<button>Find/Lose Gold</button>
+			</form>
+		</div>
+		<div>
+			<form action="/submit" method="post">
+				<input type="hidden" name="spa" />
+				<p>Spa</p>
+				<p>(loses 5-20 gold)</p>
+				<button>Spend Gold</button>
 			</form>
 		</div>
 	</div>
