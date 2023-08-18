@@ -1,14 +1,16 @@
 package com.coding_dojo.fruityLoops.controllers;
 
 import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import com.coding_dojo.fruityLoops.models.Item;
 
 @Controller
 public class ItemController {
-	@RequestMapping("/")
+	@GetMapping("/")
 	public String index(Model model) {
 		ArrayList<Item> fruits = new ArrayList<Item>();
 		fruits.add(new Item("Kiwi", 1.5));

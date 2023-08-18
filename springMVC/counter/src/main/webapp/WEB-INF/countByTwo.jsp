@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Count By Two</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
 	<h1>Hello, thanks for visiting - your count should go up by two</h1>

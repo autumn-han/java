@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8"/>
-<!-- <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" /> -->
-<!-- <link rel="stylesheet" type="text/css" href="/css/style.css" /> -->
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <title>Fruity Loops</title>
 </head>
 <body>

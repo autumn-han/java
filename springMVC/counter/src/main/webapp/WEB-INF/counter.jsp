@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Current Visit Count</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
 	<h1>You have visited your server: <c:out value="${count}" /> time(s)</h1>
