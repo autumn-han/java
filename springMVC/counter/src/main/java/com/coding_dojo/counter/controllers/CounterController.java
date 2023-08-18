@@ -15,10 +15,9 @@ public class CounterController {
 			session.setAttribute("count", count);
 		}
 		else {
-			count++;
-			session.setAttribute("count", count);
+//			count++;
+//			fix this later
 		}
-		return "index.jsp";
 	}
 	@RequestMapping("/your_server/counter")
 	public String counter(HttpSession session) {

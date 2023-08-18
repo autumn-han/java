@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Random;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,14 +19,14 @@ public class MainController {
 	ArrayList<String> activities = new ArrayList<String>();
 	Random random = new Random();
 	
-	@RequestMapping("/")
+	@GetMapping("/")
 	public String index(HttpSession session) {
 		session.getAttribute("gold");
 		session.getAttribute("activities");
 		return "index.jsp";
 	}
 	
-	@RequestMapping("/prison")
+	@GetMapping("/prison")
 	public String prison() {
 		return "prison.jsp";
 	}
@@ -38,7 +40,7 @@ public class MainController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/submit", method=RequestMethod.POST)
+	@PostMapping("/submit")
 	public String submit(HttpSession session,
 			@RequestParam(value="farm", required=false) String farm,
 			@RequestParam(value="cave", required=false) String cave,
