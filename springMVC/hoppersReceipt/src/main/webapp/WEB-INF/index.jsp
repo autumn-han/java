@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Simple Receipt</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
 	<h1>Customer Name: <c:out value="${name}" /></h1>
