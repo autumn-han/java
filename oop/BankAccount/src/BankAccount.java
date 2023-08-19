@@ -45,7 +45,7 @@ public class BankAccount {
 				System.out.println("Unable to process request due to insufficient funds");
 			}
 			else {
-				this.checkingBalance += amount;
+				this.checkingBalance -= amount;
 				totalMoney -= amount;
 			}
 		}
@@ -54,7 +54,7 @@ public class BankAccount {
 				System.out.println("Unable to process request due to insufficient funds");
 			}
 			else {
-				this.savingsBalance += amount;
+				this.savingsBalance -= amount;
 				totalMoney -= amount;
 			}
 		}
