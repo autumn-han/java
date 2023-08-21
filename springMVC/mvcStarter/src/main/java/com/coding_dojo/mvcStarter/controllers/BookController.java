@@ -1,10 +1,10 @@
 package com.coding_dojo.mvcStarter.controllers;
 
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.coding_dojo.mvcStarter.models.Book;
 import com.coding_dojo.mvcStarter.services.BookService;
 
@@ -16,7 +16,16 @@ public class BookController {
 		this.bookService = bookService;
 	}
 	
-	@RequestMapping("/books/{id}")
+//	retrieve all books from the database
+	@GetMapping("/books")
+	public String displayAll(Model model) {
+		List<Book> books = bookService.allBooks();
+		model.addAttribute("books", books);
+		return "index.jsp";
+	}
+	
+//	retrieve one book from the database
+	@GetMapping("/books/{id}")
 	public String displayBook(
 			Model model,
 			@PathVariable("id") Long id) {

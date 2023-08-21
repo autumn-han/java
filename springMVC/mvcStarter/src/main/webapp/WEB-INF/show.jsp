@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Reading Books</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
 	<div>

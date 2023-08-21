@@ -57,31 +57,31 @@ public class Book {
 	
 //	getters and setters
 	public Long getId() {
-		return this.id;
+		return id;
 	}
 	public void setId(Long newId) {
 		this.id = newId;
 	}
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
 	public void setTitle(String newTitle) {
 		this.title = newTitle;
 	}
 	public String getDesc() {
-		return this.description;
+		return description;
 	}
 	public void setDesc(String newDesc) {
 		this.description = newDesc;
 	}
 	public String getLang() {
-		return this.language;
+		return language;
 	}
 	public void setLang(String newLang) {
 		this.language = newLang;
 	}
 	public int getPages() {
-		return this.pages;
+		return pages;
 	}
 	public void setPages(int newPages) {
 		this.pages = newPages;
