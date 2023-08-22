@@ -21,15 +21,15 @@ import jakarta.validation.constraints.Size;
 @Table(name="burgers")
 public class Burger {
 	
-//	table rows
+//	table rows - with custom error messaging for validations
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
-	@Size(min = 5, max = 100)
+	@Size(min = 5, max = 100, message="Burger name must be at least 5 characters")
 	private String name;
 	@NotNull
-	@Size(min = 5, max = 100)
+	@Size(min = 5, max = 100, message="Restaurant name must be at least 5 characters")
 	private String restaurant;
 	@NotNull
 	@Min(1)
@@ -50,7 +50,7 @@ public class Burger {
 	public Burger() {}
 	
 //	constructor
-	public Burger(String name, String restaurant, int rating, String notes) {
+	public Burger(String name, String restaurant, Integer rating, String notes) {
 		this.name = name;
 		this.restaurant = restaurant;
 		this.rating = rating;
@@ -76,10 +76,10 @@ public class Burger {
 	public void setRestaurant(String restaurant) {
 		this.restaurant = restaurant;
 	}
-	public int getRating() {
+	public Integer getRating() {
 		return rating;
 	}
-	public void setRating(int rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 	public String getNotes() {

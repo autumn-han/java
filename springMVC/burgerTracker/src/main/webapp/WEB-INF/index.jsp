@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- check this uri, if the server breaks -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,25 +35,29 @@
 		</table>
 	</div>
 	<div>
-		<form>
+	<!-- implementing form:form jstl tags for this project -->
+		<form:form action="/new" method="post" modelAttribute="burger">
 			<div>
-				<label>Burger Name: </label>
-				<input name="name" type="text" />
+				<form:label path="name">Burger Name: </form:label>
+				<form:errors path="name" />
+				<form:input path="name" type="text" />
 			</div>
 			<div>
-				<label>Restaurant Name: </label>
-				<input name="restaurant" type="text" />
+				<form:label path="restaurant">Restaurant Name: </form:label>
+				<form:errors path="restaurant" />
+				<form:input path="restaurant" type="text" />
 			</div>		
 			<div>
-				<label>Rating: </label>
-				<input name="rating" type="number" min="1" max="5" />
+				<form:label path="rating">Rating: </form:label>
+				<form:errors path="rating" />
+				<form:input path="rating" type="number" min="1" max="5" />
 			</div>
 			<div>
-				<label>Notes: </label>
-				<textarea name="notes"></textarea>
+				<form:label path="notes">Notes: </form:label>
+				<form:textarea path="notes" rows="10" style="width:280px" placeholder="Optional"></form:textarea>
 			</div>
 			<button>Buns Away</button>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

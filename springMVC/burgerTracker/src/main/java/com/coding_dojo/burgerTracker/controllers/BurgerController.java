@@ -20,7 +20,7 @@ public class BurgerController {
 	}
 	
 //	retrieve all burgers & display
-	@GetMapping("/burgers")
+	@GetMapping("/")
 	public String index(
 			Model model,
 			@ModelAttribute("burger") Burger burger) {
@@ -30,16 +30,20 @@ public class BurgerController {
 	}
 	
 //	create a new burger with data-binding
-	@PostMapping("/burgers")
+	@PostMapping("/new")
 	public String create(
+			Model model,
 			@Valid @ModelAttribute("burger") Burger burger,
 			BindingResult result) {
 		if (result.hasErrors()) {
+//			make sure when rendering the display page, you have data passed in to display the burgers in the database
+			List<Burger> burgers = burgerService.allBurgers();
+			model.addAttribute("burgers", burgers);
 			return "index.jsp";
 		}
 		else {
 			burgerService.createBurger(burger);
-			return "redirect:/burgers";
+			return "redirect:/";
 		}
 	}
 }
