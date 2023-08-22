@@ -17,7 +17,7 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Title</th>			
+					<th>Title</th>		
 					<th>Pages</th>
 				</tr>
 			</thead>
