@@ -1,10 +1,16 @@
 package com.coding_dojo.burgerTracker.models;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -33,6 +39,12 @@ public class Burger {
 	@Column(columnDefinition = "TEXT")
 	@Size(max = 500)
 	private String notes;
+	
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date created_at;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date updated_at;
 	
 //	default constructor
 	public Burger() {}
@@ -75,5 +87,14 @@ public class Burger {
 	}
 	public void setNotes(String notes) {
 		this.notes = notes;
+	}
+	
+	@PrePersist
+	protected void onCreate() {
+		this.created_at = new Date();
+	}
+	@PreUpdate
+	protected void onUpdate() {
+		this.updated_at = new Date();
 	}
 }
