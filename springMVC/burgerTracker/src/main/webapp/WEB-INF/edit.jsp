@@ -11,34 +11,9 @@
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
-	<h1 class="m-3 w-25 pt-2 pb-2 text-center border border-warning rounded bg-warning text-light">Burger Tracker</h1>
-	<div class="w-75 m-3">
-	<!-- display all burgers in table -->
-		<table class="table">
-			<thead>
-				<tr class="table-primary">
-					<th>Burger Name</th>
-					<th>Restaurant Name</th>
-					<th>Rating (1-5)</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="burger" items="${burgers}">
-					<tr>
-						<td><c:out value="${burger.name}" /></td>
-						<td><c:out value="${burger.restaurant}" /></td>
-						<td><c:out value="${burger.rating}" /></td>
-						<td><a href="/burger/edit/${burger.id}">Edit</a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
-	<div class="m-5 p-3 border border-secondary rounded bg-secondary text-light" style="width:400px">
-	<!-- implementing form:form jstl tags for this project -->
-		<h2 class="m-3 w-75 pt-2 pb-2 mx-auto text-center border border-primary rounded bg-primary text-light">Add Burger</h2>
-		<form:form action="/new" method="post" modelAttribute="burger">
+	<h1 class="m-3 w-25 pt-2 pb-2 text-center border border-warning rounded bg-warning text-light">Edit Burger</h1>
+	<div class="m-3 p-3 border border-secondary rounded bg-secondary text-light" style="width:400px">
+		<form:form action="/burger/edit/${burger.id}" method="post" modelAttribute="burger">
 			<div>
 				<form:label path="name" class="form-label">Burger Name: </form:label>
 				<form:errors path="name" class="text-danger" />
