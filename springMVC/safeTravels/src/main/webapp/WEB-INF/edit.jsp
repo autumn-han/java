@@ -12,34 +12,34 @@
 </head>
 <body>
 	<div>
-		<h1>Edit Expense</h1>
-		<a href="/">Go Back</a>
+		<h1 class="w-25 m-3 border border-primary rounded bg-primary text-light text-center">Edit Expense</h1>
+		<a href="/" class="m-3">Go Back</a>
 	</div>
-	<div>
+	<div class="w-25 m-3 p-3 border bg-secondary bg-gradient rounded text-light">
 		<form:form action="/edit/${expense.id}" method="post" modelAttribute="expense">
 			<!-- displaying validation errors at the top of the form -->
-			<div>
+			<div class="rounded bg-light text-center text-danger">
 				<form:errors path="name" />
 				<form:errors path="vendor" />
 				<form:errors path="amount" />
 			</div>
 			<div>
-				<form:label path="name">Expense Name: </form:label>
-				<form:input path="name" type="text" />
+				<form:label path="name" class="form-label">Expense Name: </form:label>
+				<form:input path="name" type="text" class="form-control" />
 			</div>
 			<div>
-				<form:label path="vendor">Vendor: </form:label>
-				<form:input path="vendor" type="text" />
+				<form:label path="vendor" class="form-label">Vendor: </form:label>
+				<form:input path="vendor" type="text" class="form-control" />
 			</div>
 			<div>
-				<form:label path="amount">Amount: $</form:label>
-				<form:input path="amount" type="number" />
+				<form:label path="amount" class="form-label">Amount: $</form:label>
+				<form:input path="amount" type="number" class="form-control" />
 			</div>
 			<div>
-				<form:label path="description">Description: </form:label>
-				<form:textarea path="description" placeholder="Optional"></form:textarea>
+				<form:label path="description" class="form-label">Description: </form:label>
+				<form:textarea path="description" placeholder="Optional" class="form-control"></form:textarea>
 			</div>
-			<button>Edit Expense</button>
+			<button class="btn btn-success mt-3">Edit Expense</button>
 		</form:form>
 	</div>
 </body>
