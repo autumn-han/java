@@ -47,6 +47,16 @@ public class ExpensesController {
 		return "edit.jsp";
 	}
 	
+//	displays expense details
+	@GetMapping("/expenses/{id}")
+	public String displayOne(
+			@PathVariable("id") Long id,
+			Model model) {
+		Expense expense = expensesService.findOne(id);
+		model.addAttribute("expense", expense);
+		return "expense.jsp";
+	}
+	
 //	post new expense & check for valid form submission
 	@PostMapping("/new")
 	public String create(
