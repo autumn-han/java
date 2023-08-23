@@ -7,37 +7,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Safe Travels</title>
+<title>Edit Expense</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
-	<h1>Safe Travels</h1>
-	<!-- table to display all recorded expenses -->
 	<div>
-		<table>
-			<thead>
-				<tr>
-					<th>Expense</th>
-					<th>Vendor</th>
-					<th>Amount</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="expense" items="${expenses}">
-					<tr>
-						<td><c:out value="${expense.name}" /></td>
-						<td><c:out value="${expense.vendor}" /></td>
-						<td>$<c:out value="${expense.amount}" /></td>
-						<td><a href="/expenses/edit/${expense.id}">edit</a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+		<h1>Edit Expense</h1>
+		<a href="/">Go Back</a>
 	</div>
-	<!-- form for submitting a new expense -->
 	<div>
-		<form:form action="/new" method="post" modelAttribute="expense">
+		<form:form action="/edit/${expense.id}" method="post" modelAttribute="expense">
 			<!-- displaying validation errors at the top of the form -->
 			<div>
 				<form:errors path="name" />
@@ -60,7 +39,7 @@
 				<form:label path="description">Description: </form:label>
 				<form:textarea path="description" placeholder="Optional"></form:textarea>
 			</div>
-			<button>Add Expense</button>
+			<button>Edit Expense</button>
 		</form:form>
 	</div>
 </body>
