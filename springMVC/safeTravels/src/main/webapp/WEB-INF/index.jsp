@@ -29,7 +29,13 @@
 						<td><c:out value="${expense.name}" /></td>
 						<td><c:out value="${expense.vendor}" /></td>
 						<td>$<c:out value="${expense.amount}" /></td>
-						<td><a href="/expenses/edit/${expense.id}">edit</a></td>
+						<td class="d-flex">
+							<a href="/expenses/edit/${expense.id}"><button>edit</button></a>
+							<form action="/delete/${expense.id}" method="post">
+								<input type="hidden" value="delete" />
+								<button>delete</button>
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

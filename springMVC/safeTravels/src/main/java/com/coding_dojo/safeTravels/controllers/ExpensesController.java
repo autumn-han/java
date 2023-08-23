@@ -1,7 +1,6 @@
 package com.coding_dojo.safeTravels.controllers;
 
 import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,10 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.coding_dojo.safeTravels.models.Expense;
 import com.coding_dojo.safeTravels.services.ExpensesService;
-
 import jakarta.validation.Valid;
 
 @Controller
@@ -50,7 +47,7 @@ public class ExpensesController {
 		return "edit.jsp";
 	}
 	
-//	post new expense to database & check for valid form submission
+//	post new expense & check for valid form submission
 	@PostMapping("/new")
 	public String create(
 			Model model,
@@ -67,7 +64,7 @@ public class ExpensesController {
 		}
 	}
 	
-//	post edited expense to database & check for valid form submission
+//	post edited expense & check for valid form submission
 	@PostMapping("/edit/{id}")
 	public String update(
 			Model model,
@@ -83,4 +80,11 @@ public class ExpensesController {
 		}
 	}
 	
+//	delete expense 
+	@PostMapping("/delete/{id}")
+	public String delete(
+			@PathVariable("id") Long id) {
+		expensesService.deleteExpense(id);
+		return "redirect:/";
+	}
 }
