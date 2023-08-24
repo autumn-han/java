@@ -38,11 +38,10 @@ public class Ninja {
 	public Ninja() {}
 	
 //	constructor
-	public Ninja(String firstName, String lastName, int age, Dojo dojo) {
+	public Ninja(String firstName, String lastName, int age) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
-		this.dojo = dojo;
 	}
 	
 //	getters and setters
