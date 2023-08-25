@@ -1,14 +1,13 @@
 package com.coding_dojo.dojosAndNinjas.controllers;
 
 import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.coding_dojo.dojosAndNinjas.models.Dojo;
 import com.coding_dojo.dojosAndNinjas.models.Ninja;
 import com.coding_dojo.dojosAndNinjas.services.DojoService;
@@ -42,6 +41,16 @@ public class MainController {
 		return "ninjaForm.jsp";
 	}
 	
+//	display all ninjas for one dojo
+	@GetMapping("/ninjas/{dojoID}")
+	public String displayDojo(
+			Model model,
+			@PathVariable("dojoID") Long id) {
+		List<Ninja> ninjas = ninjaService.oneDojoAllNinjas(id);
+		model.addAttribute("ninjas", ninjas);
+		return "displayDojo.jsp";
+	}
+	
 //	post dojoForm data
 	@PostMapping("/dojo/new")
 	public String newDojo(
@@ -49,5 +58,14 @@ public class MainController {
 			BindingResult result) {
 		dojoService.create(dojo);
 		return "redirect:/dojo/new";
+	}
+	
+//	post ninjaForm data
+	@PostMapping("/ninja/new/{dojoID}")
+	public String newNinja(
+			@PathVariable("dojoID") Long id,
+			@ModelAttribute("ninja") Ninja ninja,
+			BindingResult result) {
+		return "redirect:/ninjas/" + id;
 	}
 }

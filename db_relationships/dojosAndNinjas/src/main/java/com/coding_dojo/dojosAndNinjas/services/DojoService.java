@@ -2,9 +2,7 @@ package com.coding_dojo.dojosAndNinjas.services;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.stereotype.Service;
-
 import com.coding_dojo.dojosAndNinjas.models.Dojo;
 import com.coding_dojo.dojosAndNinjas.repositories.DojoRepo;
 
