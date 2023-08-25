@@ -31,17 +31,19 @@ public class Ninja {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updated_at;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="dojo_id")
+	@JoinColumn(name="dojo_id", unique = true)
 	private Dojo dojo;
 	
 //	default constructor
 	public Ninja() {}
 	
 //	constructor
-	public Ninja(String firstName, String lastName, int age) {
+	public Ninja(Long id, String firstName, String lastName, int age, Dojo dojo) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
+		this.dojo = dojo;
 	}
 	
 //	getters and setters

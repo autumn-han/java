@@ -2,6 +2,7 @@ package com.coding_dojo.dojosAndNinjas.services;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+import com.coding_dojo.dojosAndNinjas.models.Dojo;
 import com.coding_dojo.dojosAndNinjas.models.Ninja;
 import com.coding_dojo.dojosAndNinjas.repositories.NinjaRepo;
 
@@ -15,7 +16,12 @@ public class NinjaService {
 	}
 	
 //	retrieve all ninjas in one dojo
-	public List<Ninja> oneDojoAllNinjas(Long dojoID) {
-		return ninjaRepo.findByDojoId(dojoID);
+	public List<Ninja> oneDojoAllNinjas(Dojo dojo) {
+		return ninjaRepo.findByDojo(dojo);
+	}
+	
+//	creates a ninja
+	public Ninja create(Ninja ninja) {
+		return ninjaRepo.save(ninja);
 	}
 }

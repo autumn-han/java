@@ -3,7 +3,6 @@ package com.coding_dojo.dojosAndNinjas.controllers;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,38 +33,34 @@ public class MainController {
 	@GetMapping("/ninja/new")
 	public String ninjaForm(
 			Model model,
-			@ModelAttribute("ninja") Ninja ninja,
-			BindingResult result) {
+			@ModelAttribute("ninja") Ninja ninja) {
 		List<Dojo> dojos = dojoService.getAll();
 		model.addAttribute("dojos", dojos);
 		return "ninjaForm.jsp";
 	}
 	
 //	display all ninjas for one dojo
-	@GetMapping("/ninjas/{dojoID}")
+	@GetMapping("/dojos/{dojoID}")
 	public String displayDojo(
 			Model model,
 			@PathVariable("dojoID") Long id) {
-		List<Ninja> ninjas = ninjaService.oneDojoAllNinjas(id);
-		model.addAttribute("ninjas", ninjas);
+		Dojo dojo = dojoService.getOne(id);
+		model.addAttribute("dojo", dojo);
 		return "displayDojo.jsp";
 	}
 	
 //	post dojoForm data
 	@PostMapping("/dojo/new")
 	public String newDojo(
-			@ModelAttribute("dojo") Dojo dojo,
-			BindingResult result) {
-		dojoService.create(dojo);
-		return "redirect:/dojo/new";
+			@ModelAttribute("dojo") Dojo dojo) {
+		Dojo newDojo = dojoService.create(dojo);
+		return String.format("redirect:/dojos/%s", newDojo.getId());
 	}
 	
 //	post ninjaForm data
-	@PostMapping("/ninja/new/{dojoID}")
-	public String newNinja(
-			@PathVariable("dojoID") Long id,
-			@ModelAttribute("ninja") Ninja ninja,
-			BindingResult result) {
-		return "redirect:/ninjas/" + id;
+	@PostMapping("/ninja/new")
+	public String newNinja(@ModelAttribute("ninja") Ninja ninja) {
+		Ninja newNinja = ninjaService.create(ninja);
+		return "redirect:/ninjas/" + newNinja.getDojo().getId();
 	}
 }

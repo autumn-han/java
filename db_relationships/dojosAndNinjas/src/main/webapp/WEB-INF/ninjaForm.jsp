@@ -14,7 +14,8 @@
 	<form:form action="/ninja/new" method="post" modelAttribute="ninja">
 	<!-- select input that displays all dojos in the db to select from -->
 		<div>
-			<form:select path="dojo_id">
+			<form:label path="dojo">Select Dojo: </form:label>
+			<form:select path="dojo">
 				<c:forEach var="dojo" items="${dojos}">
 					<form:option value="${dojo.id}" path="dojo_id">
 						<c:out value="${dojo.name}" />

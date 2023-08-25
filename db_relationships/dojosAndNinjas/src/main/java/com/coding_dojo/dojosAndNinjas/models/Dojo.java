@@ -35,8 +35,9 @@ public class Dojo {
 	public Dojo() {}
 	
 //	constructor
-	public Dojo(String name) {
+	public Dojo(String name, List<Ninja> ninjas) {
 		this.name = name;
+		this.ninjas = ninjas;
 	}
 	
 //	getters and setters
