@@ -28,7 +28,7 @@ public class Dojo {
 	private Date created_at;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updated_at;
-	@OneToMany(mappedBy="dojo", fetch=FetchType.LAZY)
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="dojo")
 	private List<Ninja> ninjas;
 	
 //	default constructor
@@ -52,6 +52,12 @@ public class Dojo {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public List<Ninja> getNinjas() {
+		return ninjas;
+	}
+	public void setNinjas(List<Ninja> ninjas) {
+		this.ninjas = ninjas;
 	}
 	
 //	auto-generating + updating 'created_at' and 'updated_at'

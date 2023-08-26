@@ -31,7 +31,7 @@ public class Ninja {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updated_at;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="dojo_id", unique = true)
+	@JoinColumn(name="dojo_id")
 	private Dojo dojo;
 	
 //	default constructor

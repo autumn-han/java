@@ -61,6 +61,6 @@ public class MainController {
 	@PostMapping("/ninja/new")
 	public String newNinja(@ModelAttribute("ninja") Ninja ninja) {
 		Ninja newNinja = ninjaService.create(ninja);
-		return "redirect:/ninjas/" + newNinja.getDojo().getId();
+		return "redirect:/dojos/" + newNinja.getDojo().getId();
 	}
 }
