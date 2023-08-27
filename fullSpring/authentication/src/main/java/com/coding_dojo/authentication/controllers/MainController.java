@@ -33,8 +33,12 @@ public class MainController {
 	public String dashboard(
 			Model model,
 			HttpSession session) {
-		model.addAttribute("user", session.getAttribute("user"));
-		return "userDash.jsp";
+		if (session.getAttribute("user") == null) {
+			return "redirect:/";
+		}
+		else {
+			return "userDash.jsp";
+		}
 	}
 	
 //	register new user
