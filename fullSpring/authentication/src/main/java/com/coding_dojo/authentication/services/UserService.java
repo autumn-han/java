@@ -21,7 +21,7 @@ public class UserService {
 		Optional<User> user = userRepo.findByEmail(newUser.getEmail());
 //		if user is already present in the db
 		if (user.isPresent()) {
-			result.rejectValue("email", "taken", "Email is already taken, please use another");
+			result.rejectValue("email", "present", "Email is already taken, please use another");
 		}
 //		if the new user's password and confirm-password fields don't match
 		else if (!newUser.getPassword().equals(newUser.getConfirm())) {
@@ -32,31 +32,38 @@ public class UserService {
 			return null;
 		}
 //		otherwise, create user
-		else {
-			String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
-			newUser.setPassword(hashed);
-			userRepo.save(newUser);
-		}
-		return newUser;
+		String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
+		newUser.setPassword(hashed);
+		return userRepo.save(newUser);
+
 	}
 	
 //	login a user
-	public LoginUser login(LoginUser newLoginObject, BindingResult result) {
+	public User login(LoginUser newLoginObject, BindingResult result) {
 		Optional<User> loginUser = userRepo.findByEmail(newLoginObject.getEmail());
+		User user = loginUser.get();
 //		if user is not present in the database
 		if (!loginUser.isPresent()) {
 			result.rejectValue("email", "present", "User is not registered");
 		}
 //		if passwords don't match
-		else if (!BCrypt.checkpw(newLoginObject.getPassword(), user.getPassword()) {
-			result.rejectValue("password", "matches", "Invalid password");
+		else if (!BCrypt.checkpw(newLoginObject.getPassword(), user.getPassword())) {
+			result.rejectValue("password", "match", "Invalid password");
 		}
 		else if (result.hasErrors()) {
 			return null;
 		}
-		else {
-			return newLoginObject;
+		return user;
+	}
+	
+//	retrieve one user
+	public User findOne(Long id) {
+		Optional<User> optionalUser = userRepo.findById(id);
+		if (optionalUser.isPresent()) {
+			return optionalUser.get();
 		}
-		return newLoginObject;
+		else {
+			return null;
+		}
 	}
 }

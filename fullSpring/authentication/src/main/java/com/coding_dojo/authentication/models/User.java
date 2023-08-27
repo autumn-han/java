@@ -19,29 +19,29 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotEmpty(message="Username is required!")
-    @Size(min=3, max=30, message="Username must be between 3 and 30 characters")
-    private String userName;
+    @NotEmpty(message="Username is required")
+    @Size(min=3, max=30, message="Username must be at least 3 characters")
+    private String user_name;
     
-    @NotEmpty(message="Email is required!")
-    @Email(message="Please enter a valid email!")
+    @NotEmpty(message="Email is required")
+    @Email(message="Please enter a valid email")
     private String email;
     
-    @NotEmpty(message="Password is required!")
-    @Size(min=8, max=128, message="Password must be between 8 and 128 characters")
+    @NotEmpty(message="Password is required")
+    @Size(min=8, max=128, message="Password must be at least 8 characters")
     private String password;
     
     @Transient
-    @NotEmpty(message="Confirm Password is required!")
-    @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
+    @NotEmpty(message="Confirm Password is required")
+    @Size(min=8, max=128, message="Confirm Password must be at least 8 characters")
     private String confirm;
   
 //  default constructor
     public User() {}
     
 //  constructor
-    public User(String userName, String email, String password) {
-    	this.userName = userName;
+    public User(String user_name, String email, String password) {
+    	this.user_name = user_name;
     	this.email = email;
     	this.password = password;
     }
@@ -53,11 +53,11 @@ public class User {
     public void setId(Long id) {
     	this.id = id;
     }
-    public String getUserName() {
-    	return userName;
+    public String getUser_name() {
+    	return user_name;
     }
-    public void setUserName(String userName) {
-    	this.userName = userName;
+    public void setUser_name(String userName) {
+    	this.user_name = userName;
     }
     public String getEmail() {
     	return email;

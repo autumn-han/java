@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
 	<div>
@@ -15,10 +16,16 @@
 		<h3>Join our growing community</h3>
 		<div>
 			<h2>Register</h2>
-			<form:form action="" method="post" modelAttribute="newUser">
+			<form:form action="/user/register" method="post" modelAttribute="newUser">
 				<div>
-					<form:label path="userName">Username: </form:label>
-					<form:input path="userName" />
+					<p><form:errors path="user_name" /></p>
+					<p><form:errors path="email" /></p>
+					<p><form:errors path="password" /></p>
+					<p><form:errors path="confirm" /></p>
+				</div>
+				<div>
+					<form:label path="user_name">Username: </form:label>
+					<form:input path="user_name" />
 				</div>
 				<div>
 					<form:label path="email">Email: </form:label>
@@ -37,7 +44,11 @@
 		</div>
 		<div>
 			<h2>Login</h2>
-			<form:form action="" method="post" modelAttribute="newLogin">
+			<form:form action="/user/login" method="post" modelAttribute="newLogin">
+				<div>
+					<p><form:errors path="email" /></p>
+					<p><form:errors path="password" /></p>
+				</div>
 				<div>
 					<form:label path="email">Email: </form:label>
 					<form:input path="email" />
