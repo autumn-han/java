@@ -32,7 +32,7 @@ public class User {
 	@NotEmpty(message="Email is required")
 	private String email;
 	
-	@NotEmpty(message="Password is required")
+	@NotEmpty(message="Password is required")	
 	@Size(min=8, max=40, message="Password must be at least 8 characters")
 	private String password;
 	
