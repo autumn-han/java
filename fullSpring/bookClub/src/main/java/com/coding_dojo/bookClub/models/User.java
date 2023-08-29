@@ -31,16 +31,20 @@ public class User {
 	private String name;
 	
 	@NotEmpty(message="Email is required")
-	@Email
+	@Email(message="Please enter a valid email address")
 	private String email;
 	
-	@NotEmpty(message="Password is required")	
-	@Size(min=8, max=40, message="Password must be at least 8 characters")
+	@NotEmpty(message="Password is required")
+	@Size(min=8, max=100, message="Password must be at least 8 characters")
 	private String password;
+	
+//	@NotEmpty(message="Password is required")	
+//	@Size(min=8, max=40, message="Password must be at least 8 characters")
+//	private String password;
 	
 	@Transient
 	@NotEmpty(message="Must confirm password")
-	@Size(min=8, max=40, message="Password must be at least 8 characters")
+	@Size(min=8, max=100, message="Password must be at least 8 characters")
 	private String confirm;
 	
 	@Column(updatable=false)

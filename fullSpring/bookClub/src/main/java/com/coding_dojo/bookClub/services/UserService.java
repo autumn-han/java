@@ -19,6 +19,7 @@ public class UserService {
 	
 //	register user
 	public User register(User newUser, BindingResult result) {
+		System.out.println("Hello, you've reached the register service method");
 		Optional<User> user = userRepo.findByEmail(newUser.getEmail());
 //		if user is already registered
 		if (user.isPresent()) {
@@ -38,6 +39,7 @@ public class UserService {
 		else {
 			String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
 			newUser.setPassword(hashed);
+			System.out.println("You have triggered the action to save the user to the db");
 			return userRepo.save(newUser);
 		}
 	}
