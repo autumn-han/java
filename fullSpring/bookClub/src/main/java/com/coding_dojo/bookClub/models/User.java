@@ -38,10 +38,6 @@ public class User {
 	@Size(min=8, max=100, message="Password must be at least 8 characters")
 	private String password;
 	
-//	@NotEmpty(message="Password is required")	
-//	@Size(min=8, max=40, message="Password must be at least 8 characters")
-//	private String password;
-	
 	@Transient
 	@NotEmpty(message="Must confirm password")
 	@Size(min=8, max=100, message="Password must be at least 8 characters")

@@ -8,5 +8,6 @@ import com.coding_dojo.bookClub.models.User;
 
 @Repository
 public interface BookRepo extends CrudRepository<Book, Long> {
+	List<Book> findAll();
 	List<Book> findByUser(User user);
 }

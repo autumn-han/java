@@ -30,7 +30,7 @@ public class Book {
 	@NotEmpty(message="An author must be provided")
 	private String author;
 	
-	@NotEmpty(message="Book commentary must be provided")
+	@NotEmpty(message="Book commentary must be provided")	
 	private String comments;
 	
 	@Column(updatable=false)

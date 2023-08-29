@@ -15,8 +15,8 @@
 			<h1>Welcome, <c:out value="${user.name}" /></h1>
 		</div>
 		<div>
-			<a href=""><button>Logout</button></a>
-			<a href=""><button>Add a Book to My Shelf</button></a>
+			<a href="/logout"><button>Logout</button></a>
+			<a href="/books/new"><button>Add a Book to My Shelf</button></a>
 		</div>
 	</div>
 	<!-- table with all users and users' books -->
@@ -31,15 +31,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="user" items="${users}">
-					<c:forEach var="book" items="${user.books}">
-						<tr>
-							<td><c:out value="${book.id}" /></td>
-							<td><c:out value="${book.title}" /></td>
-							<td><c:out value="${book.author}" /></td>
-							<td><c:out value="${book.user.name}" /></td>
-						</tr>
-					</c:forEach>
+				<c:forEach var="book" items="${books}">
+					<tr>
+						<td><c:out value="${book.id}" /></td>
+						<td><a href="/book/${book.id}"><c:out value="${book.title}" /></a></td>
+						<td><c:out value="${book.author}" /></td>
+						<td><c:out value="${book.user.name}" /></td>
+					</tr>				
 				</c:forEach>
 			</tbody>
 		</table>

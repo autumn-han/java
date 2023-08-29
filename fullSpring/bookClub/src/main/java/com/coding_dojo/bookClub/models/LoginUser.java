@@ -12,7 +12,7 @@ public class LoginUser {
 	private String email;
 	
 	@NotEmpty(message="Password is required")
-	@Size(min=8, max=40, message="Please enter a valid password")
+	@Size(min=8, max=100, message="Please enter a valid password")
 	private String password;
 	
 //	default constructor
