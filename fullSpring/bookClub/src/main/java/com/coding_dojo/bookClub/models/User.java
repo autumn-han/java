@@ -14,6 +14,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
@@ -30,6 +31,7 @@ public class User {
 	private String name;
 	
 	@NotEmpty(message="Email is required")
+	@Email
 	private String email;
 	
 	@NotEmpty(message="Password is required")	

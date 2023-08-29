@@ -12,7 +12,7 @@
 <body>
 	<h1>Book Club</h1>
 	<p>A place for friends to share thoughts on books</p>
-	<div>
+<!-- 	<div> -->
 		<!-- registration form -->
 		<div>
 			<h2>Register</h2>
@@ -61,6 +61,6 @@
 				<button>Login</button>
 			</form:form>
 		</div>
-	</div>
+<!-- 	</div> -->
 </body>
 </html>

@@ -23,19 +23,23 @@ public class UserService {
 //		if user is already registered
 		if (user.isPresent()) {
 			result.rejectValue("email", "alreadyPresent", "Email is already taken, please use another");
+			return null;
 		}
 //		if the password confirmation does not match password entry
 		else if (!newUser.getPassword().equals(newUser.getConfirm())) {
-			result.rejectValue("confirm", "match", "Password confirmation does not match password entry");
+			result.rejectValue("password", "match", "Password confirmation does not match password entry");
+			return null;
 		}
 //		if form data does not pass model-level validations
 		else if (result.hasErrors()) {
 			return null;
 		}
 //		else: hash entered password and set user password to hash before registering/saving to db
-		String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
-		newUser.setPassword(hashed);
-		return userRepo.save(newUser);
+		else {
+			String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
+			newUser.setPassword(hashed);
+			return userRepo.save(newUser);
+		}
 	}
 	
 //	login a user
@@ -45,17 +49,20 @@ public class UserService {
 //		if the user is not registered
 		if (!potentialUser.isPresent()) {
 			result.rejectValue("email", "notPresent", "User is not registered");
+			return null;
 		}
 //		if the password login fails to match any password in the db
 		else if (!BCrypt.checkpw(newLogin.getPassword(), user.getPassword())) {
 			result.rejectValue("password", "match", "Invalid password");
+			return null;
 		}
 //		if the form data does not pass model-level validations
 		else if (result.hasErrors()) {
 			return null;
 		}
-//		else: return user object 
-		return user;
+		else {
+			return user;
+		}
 	}
 	
 //	retrieve one user

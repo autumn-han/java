@@ -25,9 +25,9 @@ public class MainController {
 	
 //	display login/registration page
 	@GetMapping("/")
-	public String index(
-			@ModelAttribute("newUser") User newUser,
-			@ModelAttribute("loginUser") LoginUser loginUser) {
+	public String index(Model model) {
+		model.addAttribute("newUser", new User());
+		model.addAttribute("loginUser", new LoginUser());
 		return "index.jsp";
 	}
 	
@@ -44,19 +44,17 @@ public class MainController {
 //	register user
 	@PostMapping("/register")
 	public String register(
-			Model model,
 			HttpSession session,
 			@Valid @ModelAttribute("newUser") User newUser,
-			BindingResult result) {
+			BindingResult result,
+			Model model) {
+		User user = userService.register(newUser, result);
 		if (result.hasErrors()) {
 			model.addAttribute("loginUser", new LoginUser());
 			return "index.jsp";
 		}
-		else {
-			userService.register(newUser, result);
-			session.setAttribute("user", newUser);
-			return "redirect:/books";
-		}
+		session.setAttribute("user", user);
+		return "redirect:/books";
 	}
 	
 //	login user
