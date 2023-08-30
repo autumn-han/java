@@ -100,10 +100,13 @@
 							<td><c:out value="${book.author}" /></td>
 							<td><c:out value="${book.user.name}" /></td>
 							<td>
-								<form action="" method="post">
-									<input type="hidden" value="return" />
+								<form:form action="/return/${book.id}" method="post" modelAttribute="returned">
+									<form:input path="user" type="hidden" value="${book.user.id}" />
+									<form:input path="title" type="hidden" value="${book.title}" />
+									<form:input path="author" type="hidden" value="${book.author}" />
+									<form:input path="comments" type="hidden" value="${book.comments}" />
 									<button>Return</button>
-								</form>
+								</form:form>
 							</td>
 						</tr>
 					</c:if>				

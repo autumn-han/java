@@ -37,6 +37,7 @@ public class MainController {
 	@GetMapping("/books")
 	public String dashboard(
 			@ModelAttribute("borrowed") Book borrowed,
+			@ModelAttribute("returned") Book returned,
 			Model model,
 			HttpSession session) {
 		model.addAttribute("user", session.getAttribute("user"));
@@ -166,6 +167,15 @@ public class MainController {
 			@Valid @ModelAttribute("borrowed") Book borrowed,
 			BindingResult result) {
 		bookService.update(borrowed);
+		return "redirect:/books";
+	}
+	
+//	return a book
+	@PostMapping("/return/{id}")
+	public String returned(
+			@ModelAttribute("returned") Book returned,
+			BindingResult result) {
+		bookService.update(returned);
 		return "redirect:/books";
 	}
  }

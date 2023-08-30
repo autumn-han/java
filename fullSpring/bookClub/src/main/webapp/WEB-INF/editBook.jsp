@@ -22,6 +22,7 @@
 				<p><form:errors path="comments" /></p>
 			</div>
 			<div>
+				<form:input path="borrower" type="hidden" value="${book.borrower.id}" />
 				<form:input path="user" type="hidden" value="${book.user.id}"/>
 			</div>
 			<div>
