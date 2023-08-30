@@ -61,16 +61,21 @@
 								</td>
 							</c:if>
 							<c:if test="${ user.id != book.user.id }">
-								<td>
-									<form:form action="/borrow/${book.id}" method="post" modelAttribute="borrowed">
-										<form:input path="user" type="hidden" value="${book.user.id}" />
-										<form:input path="borrower" type="hidden" value="${user.id}" />
-										<form:input path="title" type="hidden" value="${book.title}" />
-										<form:input path="author" type="hidden" value="${book.author}" />
-										<form:input path="comments" type="hidden" value="${book.comments}" />
-										<button class="btn btn-success">Borrow</button>
-									</form:form>
-								</td>
+								<c:if test="${ book.borrower != null }">
+									<td></td>
+								</c:if>
+								<c:if test="${ book.borrower == null }">
+									<td>
+										<form:form action="/borrow/${book.id}" method="post" modelAttribute="borrowed">
+											<form:input path="user" type="hidden" value="${book.user.id}" />
+											<form:input path="borrower" type="hidden" value="${user.id}" />
+											<form:input path="title" type="hidden" value="${book.title}" />
+											<form:input path="author" type="hidden" value="${book.author}" />
+											<form:input path="comments" type="hidden" value="${book.comments}" />
+											<button class="btn btn-success">Borrow</button>
+										</form:form>
+									</td>
+								</c:if>
 							</c:if>
 						</tr>
 					</c:if>			
