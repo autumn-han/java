@@ -39,5 +39,11 @@
 			<button>Submit Edit</button>
 		</form:form>
 	</div>
+	<div>
+		<form action="/delete/${book.id}" method="post">
+			<input type="hidden" value="delete" />
+			<button>Delete</button>
+		</form>
+	</div>
 </body>
 </html>

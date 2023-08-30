@@ -36,6 +36,7 @@ public class MainController {
 //	display user dashboard
 	@GetMapping("/books")
 	public String dashboard(
+			@ModelAttribute("borrowed") Book borrowed,
 			Model model,
 			HttpSession session) {
 		model.addAttribute("user", session.getAttribute("user"));
@@ -154,9 +155,17 @@ public class MainController {
 	
 //	delete a book
 	@PostMapping("/delete/{id}")
-	public String delete(
-			@PathVariable("id") Long id) {
+	public String delete(@PathVariable("id") Long id) {
 		bookService.delete(id);
+		return "redirect:/books";
+	}
+	
+//	borrow a book
+	@PostMapping("/borrow/{id}")
+	public String borrow(
+			@Valid @ModelAttribute("borrowed") Book borrowed,
+			BindingResult result) {
+		bookService.update(borrowed);
 		return "redirect:/books";
 	}
  }

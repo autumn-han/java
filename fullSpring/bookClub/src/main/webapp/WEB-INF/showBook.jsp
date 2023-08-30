@@ -27,7 +27,7 @@
 		<p><c:out value="${book.comments}" /></p>
 	</div>
 	<c:if test="${ book.user.id == user.id }">
-		<div>
+		<div class="d-flex">
 			<a href="/books/edit/${book.id}"><button>Edit</button></a>
 			<form action="/delete/${book.id}" method="post">
 				<input type="hidden" value="delete" />
