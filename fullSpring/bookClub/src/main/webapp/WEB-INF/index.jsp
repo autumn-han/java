@@ -10,28 +10,30 @@
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
-	<h1>Book Club</h1>
-	<p>A place for friends to share thoughts on books</p>
-<!-- 	<div> -->
+	<div class="mx-auto m-3 p-4 text-center border rounded border-primary bg-primary text-light" style="width: 450px;">
+		<h1>Book Club</h1>
+		<p>A place for friends to share thoughts on books</p>
+	</div>
+	<div class="d-flex justify-content-evenly m-5"> 
 		<!-- registration form -->
 		<div>
 			<h2>Register</h2>
 			<form:form action="/register" method="post" modelAttribute="newUser">
 				<div>
-					<form:label path="name">Name: </form:label>
-					<form:input path="name" />
+					<form:label path="name" class="form-label">Name: </form:label>
+					<form:input path="name" class="form-control"/>
 				</div>
 				<div>
-					<form:label path="email">Email: </form:label>
-					<form:input path="email" />
+					<form:label path="email" class="form-label">Email: </form:label>
+					<form:input path="email" class="form-control"/>
 				</div>
 				<div>
-					<form:label path="password">Password: </form:label>
-					<form:input path="password" type="password" />
+					<form:label path="password" class="form-label">Password: </form:label>
+					<form:input path="password" type="password" class="form-control"/>
 				</div>
 				<div>
-					<form:label path="confirm">Confirm Password: </form:label>
-					<form:input path="confirm" type="password" />
+					<form:label path="confirm" class="form-label">Confirm Password: </form:label>
+					<form:input path="confirm" type="password" class="form-control"/>
 				</div>
 				<div>
 					<p><form:errors path="name" /></p>
@@ -39,7 +41,7 @@
 					<p><form:errors path="password" /></p>
 					<p><form:errors path="confirm" /></p>
 				</div>
-				<button>Register</button>
+				<button class="btn btn-success">Register</button>
 			</form:form>
 		</div>
 		<!-- login form -->
@@ -47,20 +49,20 @@
 			<h2>Login</h2>
 			<form:form action="/login" method="post" modelAttribute="loginUser">
 				<div>
-					<form:label path="email">Email: </form:label>
-					<form:input path="email" />
+					<form:label path="email" class="form-label">Email: </form:label>
+					<form:input path="email" class="form-control"/>
 				</div>
 				<div>
-					<form:label path="password">Password: </form:label>
-					<form:input path="password" type="password" />
+					<form:label path="password" class="form-label">Password: </form:label>
+					<form:input path="password" type="password" class="form-control"/>
 				</div>
 				<div>
 					<p><form:errors path="email" /></p>
 					<p><form:errors path="password" /></p>
 				</div>
-				<button>Login</button>
+				<button class="btn btn-success">Login</button>
 			</form:form>
 		</div>
-<!-- 	</div> -->
+	</div>
 </body>
 </html>

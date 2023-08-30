@@ -11,21 +11,21 @@
 </head>
 <body>
 	<!-- header div -->
-	<div>
+	<div class="d-flex justify-content-around mt-3">
 		<div>
 			<h3>Hello, <c:out value="${user.name}" />. Welcome to...</h3>
 			<h1>The Book Broker</h1>
 		</div>
 		<div>
-			<a href="/logout"><button>Logout</button></a>
-			<a href="/books/new"><button>Add a Book to My Shelf</button></a>
+			<a href="/logout"><button class="btn btn-danger">Logout</button></a>
+			<a href="/books/new"><button class="btn btn-primary">Add a Book to My Shelf</button></a>
 		</div>
 	</div>
 	<!-- table with all users and users' books -->
-	<div>
-		<h3>Available Books to Borrow</h3>
-		<table>
-			<thead>
+	<div class="mx-auto mt-5" style="width: 1050px;">
+		<h3>All Books</h3>
+		<table class="table">
+			<thead class="table-success">
 				<tr>
 					<th>ID</th>
 					<th>Title</th>
@@ -51,11 +51,11 @@
 							</c:if>
 							<c:if test="${ user.id == book.user.id }">
 								<td>
-									<div class="d-flex">
-										<a href="/books/edit/${book.id}"><button>Edit</button></a>
+									<div class="d-flex justify-content-between" style="width: 150px;">
+										<a href="/books/edit/${book.id}"><button class="btn btn-warning">Edit</button></a>
 										<form action="/delete/${book.id}" method="post">
 											<input type="hidden" value="delete" />
-											<button>Delete</button>
+											<button class="btn btn-danger">Delete</button>
 										</form>
 									</div>
 								</td>
@@ -68,7 +68,7 @@
 										<form:input path="title" type="hidden" value="${book.title}" />
 										<form:input path="author" type="hidden" value="${book.author}" />
 										<form:input path="comments" type="hidden" value="${book.comments}" />
-										<button>Borrow</button>
+										<button class="btn btn-success">Borrow</button>
 									</form:form>
 								</td>
 							</c:if>
@@ -79,10 +79,10 @@
 		</table>
 	</div>
 	<!-- table with all the logged in users currently borrowed books -->
-	 <div>
+	 <div class="mx-auto mt-5" style="width: 1050px;">
 	 	<h3>Books I'm Borrowing</h3>
-		<table>
-			<thead>
+		<table class="table">
+			<thead class="table-warning">
 				<tr>
 					<th>ID</th>
 					<th>Title</th>
@@ -105,7 +105,7 @@
 									<form:input path="title" type="hidden" value="${book.title}" />
 									<form:input path="author" type="hidden" value="${book.author}" />
 									<form:input path="comments" type="hidden" value="${book.comments}" />
-									<button>Return</button>
+									<button class="btn btn-success">Return</button>
 								</form:form>
 							</td>
 						</tr>
