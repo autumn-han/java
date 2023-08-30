@@ -31,18 +31,24 @@
 					<th>Title</th>
 					<th>Author</th>
 					<th>Posted By</th>
+					<th>Status</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="book" items="${books}">
-					<c:if test="${ book.borrower == null }">
-					
+					<c:if test="${ user.id != book.borrower.id }">				
 						<tr>
 							<td><c:out value="${book.id}" /></td>
 							<td><a href="/book/${book.id}"><c:out value="${book.title}" /></a></td>
 							<td><c:out value="${book.author}" /></td>
 							<td><c:out value="${book.user.name}" /></td>
+							<c:if test="${ book.borrower != null }">
+								<td>Checked Out</td>
+							</c:if>
+							<c:if test="${ book.borrower == null }">
+								<td>Available</td>
+							</c:if>
 							<c:if test="${ user.id == book.user.id }">
 								<td>
 									<div class="d-flex">
@@ -67,7 +73,7 @@
 								</td>
 							</c:if>
 						</tr>
-					</c:if>				
+					</c:if>			
 				</c:forEach>
 			</tbody>
 		</table>
@@ -87,7 +93,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="book" items="${books}">
-					<c:if test="${ book.borrower != null }">
+					<c:if test="${ user.id == book.borrower.id }">
 						<tr>
 							<td><c:out value="${book.id}" /></td>
 							<td><a href="/book/${book.id}"><c:out value="${book.title}" /></a></td>
