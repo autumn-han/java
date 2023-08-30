@@ -44,15 +44,20 @@ public class Book {
 	@JoinColumn(name="user_id")
 	private User user;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="borrower_id")
+	private User borrower;
+	
 //	default constructor
 	public Book() {}
 	
 //	constructor
-	public Book(String title, String author, String comments, User user) {
+	public Book(String title, String author, String comments, User user, User borrower) {
 		this.title = title;
 		this.author = author;
 		this.comments = comments;
 		this.user = user;
+		this.borrower = borrower;
 	}
 	
 //	getters and setters
@@ -85,6 +90,12 @@ public class Book {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public User getBorrower() {
+		return borrower;
+	}
+	public void setBorrower(User borrower) {
+		this.borrower = borrower;
 	}
 	
 //	auto-generating + updating 'created_at' and 'updated_at'

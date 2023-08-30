@@ -53,15 +53,19 @@ public class User {
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
 	private List<Book> books;
 	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="borrower")
+	private List<Book> borrowed;
+	
 //	default constructor
 	public User () {}
 	
 //	constructor
-	public User(String name, String email, String password, List<Book> books) {
+	public User(String name, String email, String password, List<Book> books, List<Book> borrowed) {
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.books = books;
+		this.borrowed = borrowed;
 	}
 	
 //	getters and setters
@@ -100,6 +104,12 @@ public class User {
 	}
 	public void setBooks(List<Book> books) {
 		this.books = books;
+	}
+	public List<Book> getBorrowed() {
+		return borrowed;
+	}
+	public void setBorrowed(List<Book> borrowed) {
+		this.borrowed = borrowed;
 	}
 	
 //	auto-generating + updating 'created_at' and 'updated_at'
