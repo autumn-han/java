@@ -40,9 +40,14 @@ public class MainController {
 			@ModelAttribute("returned") Book returned,
 			Model model,
 			HttpSession session) {
-		model.addAttribute("user", session.getAttribute("user"));
-		model.addAttribute("books", bookService.allBooks());
-		return "dashboard.jsp";
+		if (session.getAttribute("user") == null) {
+			return "redirect:/";
+		}
+		else {
+			model.addAttribute("user", session.getAttribute("user"));
+			model.addAttribute("books", bookService.allBooks());
+			return "dashboard.jsp";
+		}
 	}
 	
 //	display book form
@@ -50,9 +55,14 @@ public class MainController {
 	public String bookForm(
 			Model model,
 			HttpSession session) {
-		model.addAttribute("newBook", new Book());
-		model.addAttribute("user", session.getAttribute("user"));
-		return "addBook.jsp";
+		if (session.getAttribute("user") == null) {
+			return "redirect:/";
+		}
+		else {
+			model.addAttribute("newBook", new Book());
+			model.addAttribute("user", session.getAttribute("user"));
+			return "addBook.jsp";
+		}
 	}
 	
 //  display book details
@@ -61,10 +71,15 @@ public class MainController {
 			@PathVariable("id") Long id,
 			Model model,
 			HttpSession session) {
-		Book book = bookService.getOne(id);
-		model.addAttribute("book", book);
-		model.addAttribute("user", session.getAttribute("user"));
-		return "showBook.jsp";
+		if (session.getAttribute("user") == null) {
+			return "redirect:/";
+		}
+		else {
+			Book book = bookService.getOne(id);
+			model.addAttribute("book", book);
+			model.addAttribute("user", session.getAttribute("user"));
+			return "showBook.jsp";
+		}
 	}
 	
 //	display book edit form
@@ -73,10 +88,15 @@ public class MainController {
 			@PathVariable("id") Long id,
 			Model model,
 			HttpSession session) {
-		Book book = bookService.getOne(id);
-		session.setAttribute("book", book);
-		model.addAttribute("bookEdit", book);
-		return "editBook.jsp";
+		if (session.getAttribute("user") == null) {
+			return "redirect:/";
+		}
+		else {
+			Book book = bookService.getOne(id);
+			session.setAttribute("book", book);
+			model.addAttribute("bookEdit", book);
+			return "editBook.jsp";
+		}
 	}
 	
 //	register user
