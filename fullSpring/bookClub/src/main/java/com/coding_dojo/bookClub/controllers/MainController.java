@@ -91,8 +91,10 @@ public class MainController {
 			model.addAttribute("loginUser", new LoginUser());
 			return "index.jsp";
 		}
-		session.setAttribute("user", user);
-		return "redirect:/books";
+		else {
+			session.setAttribute("user", user);
+			return "redirect:/books";
+		}
 	}
 	
 //	login user
@@ -102,12 +104,12 @@ public class MainController {
 			HttpSession session,
 			@Valid @ModelAttribute("loginUser") LoginUser loginUser,
 			BindingResult result) {
+		User user = userService.login(loginUser, result);
 		if (result.hasErrors()) {
 			model.addAttribute("newUser", new User());
 			return "index.jsp";
 		}
 		else {
-			User user = userService.login(loginUser, result);
 			session.setAttribute("user", user);
 			return "redirect:/books";
 		}

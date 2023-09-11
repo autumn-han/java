@@ -47,18 +47,17 @@ public class UserService {
 //	login a user
 	public User login(LoginUser newLogin, BindingResult result) {
 		Optional<User> potentialUser = userRepo.findByEmail(newLogin.getEmail());
-		User user = potentialUser.get();
-//		if the user is not registered
+//		if username is not present in db
 		if (!potentialUser.isPresent()) {
 			result.rejectValue("email", "notPresent", "User is not registered");
 			return null;
 		}
-//		if the password login fails to match any password in the db
-		else if (!BCrypt.checkpw(newLogin.getPassword(), user.getPassword())) {
+		User user = potentialUser.get();
+//		if password does not match in the db
+		if (!BCrypt.checkpw(newLogin.getPassword(), user.getPassword())) {
 			result.rejectValue("password", "match", "Invalid password");
 			return null;
 		}
-//		if the form data does not pass model-level validations
 		else if (result.hasErrors()) {
 			return null;
 		}

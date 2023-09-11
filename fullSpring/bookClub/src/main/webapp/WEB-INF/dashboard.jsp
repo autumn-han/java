@@ -42,7 +42,12 @@
 							<td><c:out value="${book.id}" /></td>
 							<td><a href="/book/${book.id}"><c:out value="${book.title}" /></a></td>
 							<td><c:out value="${book.author}" /></td>
-							<td><c:out value="${book.user.name}" /></td>
+							<c:if test="${ user.id == book.user.id }">
+								<td>You</td>
+							</c:if>
+							<c:if test="${ user.id != book.user.id }">
+								<td><c:out value="${book.user.name}" /></td>
+							</c:if>
 							<c:if test="${ book.borrower != null }">
 								<td>Checked Out</td>
 							</c:if>
