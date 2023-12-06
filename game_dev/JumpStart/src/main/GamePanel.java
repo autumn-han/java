@@ -17,17 +17,20 @@ public class GamePanel extends JPanel {
 	private MouseInputs mouseInputs;
 	private float xDelta = 100f, yDelta = 100f;
 	private BufferedImage img, subImg;
+	private BufferedImage[][] ninjaFrogAni;
+	private int idleNinjaFrogTick, idleNinjaFrogInd, idleNinjaFrogSpeed = 7;
 	
 	public GamePanel() {
 		
 		mouseInputs = new MouseInputs(this);
 		importImg();
+		loadAnimations();
 		setPanelSize();
 		addKeyListener(new KeyboardInputs(this));
 		addMouseListener(mouseInputs);
 		addMouseMotionListener(mouseInputs);
 	}
-	
+
 	private void setPanelSize() {
 		Dimension size = new Dimension(1280, 800);
 		setMinimumSize(size);
@@ -36,12 +39,38 @@ public class GamePanel extends JPanel {
 	}
 	
 	private void importImg() {
-		InputStream is = getClass().getResourceAsStream("/ninjaFrog_idle.png");
+		InputStream is = getClass().getResourceAsStream("/ninjaFrogAll.png");
 		try {
 			img = ImageIO.read(is);
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				is.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+	}
+	
+	private void loadAnimations() {
+		ninjaFrogAni = new BufferedImage[7][12];
+		for (int j = 0; j < ninjaFrogAni.length; j++) {
+			for (int i = 0; i < ninjaFrogAni[j].length; i++) {
+				ninjaFrogAni[j][i] = img.getSubimage(i*32, j*32, 32, 32);
+			}
+		}
+	}
+	
+	private void updateAnimationTick() {
+//		idleNinjaFrogTick++;
+//		if (idleNinjaFrogTick >= idleNinjaFrogSpeed) {
+//			idleNinjaFrogTick = 0;
+//			idleNinjaFrogInd++;
+//			if (idleNinjaFrogInd >= ninjaFrogAni.length) {
+//				idleNinjaFrogInd = 0;
+//			}
+//		}
 	}
 	
 	public void changeXDelta(int value) {
@@ -59,8 +88,10 @@ public class GamePanel extends JPanel {
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);	
-		subImg = img.getSubimage(0, 0, 32, 32);
-		g.drawImage(subImg, (int) xDelta, (int) yDelta, 80, 80, null);
+		
+		updateAnimationTick();
+
+		g.drawImage(ninjaFrogAni[2][2], (int) xDelta, (int) yDelta, 80, 80, null);
 		
 	}
 
