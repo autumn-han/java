@@ -19,6 +19,10 @@ public class Game implements Runnable {
 		gameThread = new Thread(this);
 		gameThread.start();
 	}
+	
+	public void update() {
+		gamePanel.updateGame();
+	}
 
 	@Override
 	public void run() {
@@ -42,7 +46,7 @@ public class Game implements Runnable {
 			previousTime = currentTime;
 			
 			if (deltaU >= 1) {
-				// udpate();
+				update();
 				updates++;
 				deltaU--;
 			}

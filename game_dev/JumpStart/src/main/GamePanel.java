@@ -115,14 +115,15 @@ public class GamePanel extends JPanel {
 		this.moving = moving;
 	}
 	
+	public void updateGame() {
+		
+		updateAnimationTick();		
+		setAnimation();		
+		updatePos();
+	}
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);	
-		
-		updateAnimationTick();
-		
-		setAnimation();
-		
-		updatePos();
 
 		g.drawImage(ninjaFrogAni[playerAction][ninjaFrogInd], (int) xDelta, (int) yDelta, 80, 80, null);
 		
