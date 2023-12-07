@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
+import static utils.Constants.PlayerConstants.*;
+import static utils.Constants.Directions.*;
 
 public class GamePanel extends JPanel {
 	
@@ -18,7 +20,10 @@ public class GamePanel extends JPanel {
 	private float xDelta = 100f, yDelta = 100f;
 	private BufferedImage img, subImg;
 	private BufferedImage[][] ninjaFrogAni;
-	private int idleNinjaFrogTick, idleNinjaFrogInd, idleNinjaFrogSpeed = 7;
+	private int ninjaFrogTick, ninjaFrogInd, ninjaFrogSpeed = 10;
+	private int playerAction = IDLE;
+	private int playerDirection = -1;
+	private boolean moving = false;
 	
 	public GamePanel() {
 		
@@ -63,35 +68,63 @@ public class GamePanel extends JPanel {
 	}
 	
 	private void updateAnimationTick() {
-//		idleNinjaFrogTick++;
-//		if (idleNinjaFrogTick >= idleNinjaFrogSpeed) {
-//			idleNinjaFrogTick = 0;
-//			idleNinjaFrogInd++;
-//			if (idleNinjaFrogInd >= ninjaFrogAni.length) {
-//				idleNinjaFrogInd = 0;
-//			}
-//		}
+		ninjaFrogTick++;
+		if (ninjaFrogTick >= ninjaFrogSpeed) {
+			ninjaFrogTick = 0;
+			ninjaFrogInd++;
+			if (ninjaFrogInd >= getSpriteAmount(playerAction)) {
+				ninjaFrogInd = 0;
+			}
+		}
 	}
 	
-	public void changeXDelta(int value) {
-		this.xDelta += value;
+	private void setAnimation() {
+		if (moving) {
+			playerAction = RUNNING;
+		}
+		else {
+			playerAction = IDLE;
+		}
 	}
 	
-	public void changeYDelta(int value) {
-		this.yDelta += value;
+	private void updatePos() {
+		if (moving) {
+			switch (playerDirection) {
+			case LEFT:
+				xDelta -= 5;
+				break;
+			case UP: 
+				yDelta -= 5;
+				break;
+			case RIGHT:
+				xDelta += 5;
+				break;
+			case DOWN:
+				yDelta += 5;
+				break;
+			}
+		}
 	}
 	
-	public void setCharPos(int x, int y) {
-		this.xDelta = x;
-		this.yDelta = y;
+	public void setDirection(int direction) {
+		this.playerDirection = direction;
+		moving = true;
+	}
+	
+	public void setMoving(boolean moving) {
+		this.moving = moving;
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);	
 		
 		updateAnimationTick();
+		
+		setAnimation();
+		
+		updatePos();
 
-		g.drawImage(ninjaFrogAni[2][2], (int) xDelta, (int) yDelta, 80, 80, null);
+		g.drawImage(ninjaFrogAni[playerAction][ninjaFrogInd], (int) xDelta, (int) yDelta, 80, 80, null);
 		
 	}
 
