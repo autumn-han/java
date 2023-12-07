@@ -105,6 +105,13 @@ public class Player extends Entity {
 		}
 		
 	}
+	
+	public void resetDirBooleans() {
+		this.left = false;
+		this.up = false;
+		this.right = false;
+		this.down = false;
+	}
 
 	public boolean isLeft() {
 		return left;
