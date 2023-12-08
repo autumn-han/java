@@ -1,11 +1,6 @@
 package entities;
 
-import static utils.Constants.Directions.DOWN;
-import static utils.Constants.Directions.LEFT;
-import static utils.Constants.Directions.RIGHT;
-import static utils.Constants.Directions.UP;
-import static utils.Constants.PlayerConstants.IDLE;
-import static utils.Constants.PlayerConstants.RUNNING;
+import static utils.Constants.PlayerConstants.*;
 import static utils.Constants.PlayerConstants.getSpriteAmount;
 
 import java.awt.Graphics;
@@ -20,8 +15,7 @@ public class Player extends Entity {
 	private BufferedImage[][] ninjaFrogAni;
 	private int ninjaFrogTick, ninjaFrogInd, ninjaFrogSpeed = 10;
 	private int playerAction = IDLE;
-	private int playerDirection = -1;
-	private boolean moving = false;
+	private boolean moving = false, doubleJump = false;
 	private boolean left, up, right, down;
 	private float x, y;
 	private float playerSpeed = 2.0f;
@@ -48,19 +42,36 @@ public class Player extends Entity {
 			ninjaFrogInd++;
 			if (ninjaFrogInd >= getSpriteAmount(playerAction)) {
 				ninjaFrogInd = 0;
+				doubleJump = false;
 			}
 		}	
 	}
 	
 	private void setAnimation() {
+		int startAni = playerAction;
+		
 		if (moving) {
 			playerAction = RUNNING;
 		}
 		else {
 			playerAction = IDLE;
 		}
+		
+		if (doubleJump) {
+			playerAction = DOUBLE_JUMP;
+		}
+		
+		if (startAni != playerAction) {
+			resetNinjaFrogTick();
+		}
 	}
 	
+	private void resetNinjaFrogTick() {
+		ninjaFrogTick = 0;
+		ninjaFrogInd = 0;
+		
+	}
+
 	private void updatePos() {
 		moving = false;
 		
@@ -111,6 +122,10 @@ public class Player extends Entity {
 		this.up = false;
 		this.right = false;
 		this.down = false;
+	}
+	
+	public void setDoubleJump(boolean doubleJump) {
+		this.doubleJump = doubleJump;
 	}
 
 	public boolean isLeft() {
