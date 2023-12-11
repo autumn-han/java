@@ -34,7 +34,7 @@ public class Player extends Entity {
 	}
 	
 	public void render(Graphics g) {	
-		g.drawImage(ninjaFrogAni[playerAction][ninjaFrogInd], (int) x, (int) y, 80, 80, null);
+		g.drawImage(ninjaFrogAni[playerAction][ninjaFrogInd], (int) x, (int) y, 40, 40, null);
 	}
 	
 	private void updateAnimationTick() {	
