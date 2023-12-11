@@ -10,6 +10,8 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import utils.LoadSave;
+
 public class Player extends Entity {
 	
 	private BufferedImage[][] ninjaFrogAni;
@@ -95,26 +97,14 @@ public class Player extends Entity {
 	}
 	
 	private void loadAnimations() {
+		BufferedImage img = LoadSave.GetPlayerAtlas();
 		
-		InputStream is = getClass().getResourceAsStream("/ninjaFrogAll.png");
-		try {
-			BufferedImage img = ImageIO.read(is);
-			ninjaFrogAni = new BufferedImage[7][12];
-			for (int j = 0; j < ninjaFrogAni.length; j++) {
-				for (int i = 0; i < ninjaFrogAni[j].length; i++) {
-					ninjaFrogAni[j][i] = img.getSubimage(i*32, j*32, 32, 32);
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				is.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+		ninjaFrogAni = new BufferedImage[7][12];
+		for (int j = 0; j < ninjaFrogAni.length; j++) {
+			for (int i = 0; i < ninjaFrogAni[j].length; i++) {
+				ninjaFrogAni[j][i] = img.getSubimage(i*32, j*32, 32, 32);
 			}
 		}
-		
 	}
 	
 	public void resetDirBooleans() {
