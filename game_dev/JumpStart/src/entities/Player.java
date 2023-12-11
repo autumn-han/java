@@ -97,7 +97,7 @@ public class Player extends Entity {
 	}
 	
 	private void loadAnimations() {
-		BufferedImage img = LoadSave.GetPlayerAtlas();
+		BufferedImage img = LoadSave.getSpriteAtlas(LoadSave.PLAYER_ATLAS);
 		
 		ninjaFrogAni = new BufferedImage[7][12];
 		for (int j = 0; j < ninjaFrogAni.length; j++) {

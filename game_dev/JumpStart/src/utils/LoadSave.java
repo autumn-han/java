@@ -7,11 +7,14 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 public class LoadSave {
-
-	public static BufferedImage GetPlayerAtlas() {
+	
+	public static final String PLAYER_ATLAS = "ninjaFrogAll.png";
+	public static final String LEVEL_ATLAS = "terrain.png";
+	
+	public static BufferedImage getSpriteAtlas(String fileName) {
 		
 		BufferedImage img = null;
-		InputStream is = LoadSave.class.getResourceAsStream("/ninjaFrogAll.png");
+		InputStream is = LoadSave.class.getResourceAsStream("/" + fileName);
 		try {
 			img = ImageIO.read(is);
 		} catch (IOException e) {
