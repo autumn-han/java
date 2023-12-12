@@ -19,11 +19,10 @@ public class Player extends Entity {
 	private int playerAction = IDLE;
 	private boolean moving = false, doubleJump = false;
 	private boolean left, up, right, down;
-	private float x, y;
 	private float playerSpeed = 2.0f;
 
-	public Player(float x, float y) {
-		super(x, y);
+	public Player(float x, float y, int width, int height) {
+		super(x, y, width, height);
 		loadAnimations();
 	}
 	
@@ -34,7 +33,7 @@ public class Player extends Entity {
 	}
 	
 	public void render(Graphics g) {	
-		g.drawImage(ninjaFrogAni[playerAction][ninjaFrogInd], (int) x, (int) y, 40, 40, null);
+		g.drawImage(ninjaFrogAni[playerAction][ninjaFrogInd], (int) x, (int) y, width, height, null);
 	}
 	
 	private void updateAnimationTick() {	
