@@ -1,15 +1,11 @@
 package entities;
 
 import static utils.Constants.PlayerConstants.*;
+import static utils.HelpMethods.canMoveHere;
 import static utils.Constants.PlayerConstants.getSpriteAmount;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.imageio.ImageIO;
-
 import utils.LoadSave;
 
 public class Player extends Entity {
@@ -79,25 +75,32 @@ public class Player extends Entity {
 	private void updatePos() {
 		moving = false;
 		
-		if (left && !right ) {
-			x -= playerSpeed;
-			moving = true;
-		}
-		else if (!left && right) {
-			x += playerSpeed;
-			moving = true;
-		}
+		if (!left && !right && !up && !down) 
+			return;
 		
-		if (up && !down) {
-			y -= playerSpeed;
-			moving = true;
-		}
-		else if (!up && down) {
-			y += playerSpeed;
+		float xSpeed = 0, ySpeed = 0;
+		
+		if (left && !right ) 
+			xSpeed = -playerSpeed;
+		
+		else if (!left && right) 
+			xSpeed = playerSpeed;
+		
+		
+		if (up && !down) 
+			ySpeed = -playerSpeed;
+		
+		else if (!up && down) 
+			ySpeed = playerSpeed;
+		
+		
+		if (canMoveHere(x + xSpeed, y + ySpeed, width, height, levelData)) {
+			this.x += xSpeed;
+			this.y += ySpeed;
 			moving = true;
 		}
 	}
-	
+
 	private void loadAnimations() {
 		BufferedImage img = LoadSave.getSpriteAtlas(LoadSave.PLAYER_ATLAS);
 		
