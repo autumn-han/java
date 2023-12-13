@@ -20,6 +20,7 @@ public class Player extends Entity {
 	private boolean moving = false, doubleJump = false;
 	private boolean left, up, right, down;
 	private float playerSpeed = 2.0f;
+	private int[][] levelData;
 
 	public Player(float x, float y, int width, int height) {
 		super(x, y, width, height);
@@ -106,6 +107,10 @@ public class Player extends Entity {
 				ninjaFrogAni[j][i] = img.getSubimage(i*32, j*32, 32, 32);
 			}
 		}
+	}
+	
+	public void loadLevelData(int[][] levelData) {
+		this.levelData = levelData;
 	}
 	
 	public void resetDirBooleans() {
