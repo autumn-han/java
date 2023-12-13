@@ -28,12 +28,14 @@ public class Player extends Entity {
 	
 	public void update() {	
 		updatePos();
+		updateHitbox();
 		updateAnimationTick();		
 		setAnimation();		
 	}
 	
 	public void render(Graphics g) {	
 		g.drawImage(ninjaFrogAni[playerAction][ninjaFrogInd], (int) x, (int) y, width, height, null);
+		drawHitbox(g);
 	}
 	
 	private void updateAnimationTick() {	
