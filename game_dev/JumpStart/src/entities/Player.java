@@ -116,7 +116,7 @@ public class Player extends Entity {
 				airSpeed += gravity;
 				updateXPos(xSpeed);
 			} else {
-				hitbox.y = GetEntityPosUnderRoofOrAboveFloor(hitbox, airSpeed);
+				hitbox.y = getEntityPosUnderRoofOrAboveFloor(hitbox, airSpeed);
 				if (airSpeed > 0)
 					resetInAir();
 				else 
