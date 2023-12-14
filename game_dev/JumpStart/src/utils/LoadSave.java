@@ -34,7 +34,7 @@ public class LoadSave {
 	}
 	
 	public static int[][] getLevelData() {
-		int[][] levelData = new int[Game.TILES_IN_HEIGHT][Game.TILES_IN_WIDTH];
+		int[][] levelData = new int[Game.TILES_IN_HEIGHT + 1][Game.TILES_IN_WIDTH];
 		BufferedImage img = getSpriteAtlas(LEVEL_ONE_DATA);
 		
 		for (int j = 0; j < img.getHeight(); j++) {
