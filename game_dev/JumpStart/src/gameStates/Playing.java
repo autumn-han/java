@@ -34,7 +34,8 @@ public class Playing extends State implements StateMethods {
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
+		levelManager.draw(g);
+		player.render(g);
 		
 	}
 
