@@ -16,6 +16,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>res/button_atlas.png</name>
+			<type>1</type>
+			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Other/button_atlas.png</location>
+		</link>
+		<link>
 			<name>res/level_one_data.png</name>
 			<type>1</type>
 			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Terrain/level_one_data.png</location>
