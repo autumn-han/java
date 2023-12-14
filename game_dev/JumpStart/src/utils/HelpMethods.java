@@ -20,17 +20,14 @@ public class HelpMethods {
 		System.out.println("yIndex: " + yIndex + " | xIndex: " + xIndex + " | value: " + value);
 		
 		if (x < 0 || x >= Game.GAME_WIDTH) {
-			System.out.println("YOU'RE AT THE EDGE OF THE WORLD" + " | " + x);
 			return true;
 		}
 		
 		if (y < 0 || y >= Game.GAME_HEIGHT) {
-			System.out.println("YOU'RE AT THE TOP OR BOTTOM" + " | " + y);
 			return true;
 		}
 		
 		if (value >= 242 || value < 0 || value != 11) {
-			System.out.println("YOU SHALL NOT PASS" + " | " + value);
 			return true;
 		}
 		return false;
