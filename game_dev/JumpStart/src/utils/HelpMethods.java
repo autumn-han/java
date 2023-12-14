@@ -17,7 +17,7 @@ public class HelpMethods {
 		float xIndex = x / Game.TILES_SIZE;
 		float yIndex = y / Game.TILES_SIZE;
 		int value = levelData[(int) yIndex][(int) xIndex];
-		System.out.println("yIndex: " + yIndex + " | xIndex: " + xIndex);
+		System.out.println("yIndex: " + yIndex + " | xIndex: " + xIndex + " | value: " + value);
 		
 		if (x < 0 || x >= Game.GAME_WIDTH) {
 			System.out.println("YOU'RE AT THE EDGE OF THE WORLD" + " | " + x);
@@ -29,7 +29,7 @@ public class HelpMethods {
 			return true;
 		}
 		
-		if (value >= 242 || value < 0) {
+		if (value >= 242 || value < 0 || value != 11) {
 			System.out.println("YOU SHALL NOT PASS" + " | " + value);
 			return true;
 		}
