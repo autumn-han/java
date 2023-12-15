@@ -41,6 +41,11 @@
 			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Menu/pause_menu.png</location>
 		</link>
 		<link>
+			<name>res/sound_button.png</name>
+			<type>1</type>
+			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Menu/sound_button.png</location>
+		</link>
+		<link>
 			<name>res/terrain.png</name>
 			<type>1</type>
 			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Terrain/terrain.png</location>
