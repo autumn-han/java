@@ -2,6 +2,7 @@ package ui;
 
 import static utils.Constants.UI.PauseButtons.SOUND_SIZE;
 import static utils.Constants.UI.UrmButtons.URM_SIZE;
+import static utils.Constants.UI.VolumeButtons.*;
 
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
@@ -18,6 +19,7 @@ public class PauseOverlay {
 	private int bgX, bgY, bgW, bgH;
 	private SoundButton musicButton, sfxButton;
 	private UrmButton menuButton, replayButton, unpausedButton;
+	private VolumeButton volumeButton;
 	private Playing playing;
 	
 	public PauseOverlay(Playing playing) {
@@ -25,9 +27,17 @@ public class PauseOverlay {
 		loadBackground();
 		createSoundButtons();
 		createUrmButtons();
+		createVolumeButton();
 		
 	}
 	
+	private void createVolumeButton() {
+		int volX = (int) (309 * Game.SCALE);
+		int volY = (int) (278 * Game.SCALE);
+		volumeButton = new VolumeButton(volX, volY, SLIDER_WIDTH, VOLUME_HEIGHT);
+		
+	}
+
 	private void createUrmButtons() {
 		int menuX = (int) (313 * Game.SCALE);
 		int replayX = (int) (387 * Game.SCALE);
@@ -64,6 +74,7 @@ public class PauseOverlay {
 		menuButton.update();
 		replayButton.update();
 		unpausedButton.update();
+		volumeButton.update();
 	}
 	
 	public void draw(Graphics g) {
@@ -78,6 +89,9 @@ public class PauseOverlay {
 		menuButton.draw(g);
 		replayButton.draw(g);
 		unpausedButton.draw(g);
+		
+		// volume slider
+		volumeButton.draw(g);
 		
 	}
 	
@@ -109,6 +123,7 @@ public class PauseOverlay {
 		} else if (isIn(e, menuButton)) {
 			if (menuButton.isMousePressed())
 				GameState.state = GameState.MENU;
+				playing.unpauseGame();
 		} else if (isIn(e, replayButton)) {
 			if (replayButton.isMousePressed())
 				System.out.println("REPLAY");
