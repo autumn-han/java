@@ -50,5 +50,10 @@
 			<type>1</type>
 			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Terrain/terrain.png</location>
 		</link>
+		<link>
+			<name>res/urm_buttons.png</name>
+			<type>1</type>
+			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Menu/urm_buttons.png</location>
+		</link>
 	</linkedResources>
 </projectDescription>
