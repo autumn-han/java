@@ -36,6 +36,11 @@
 			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Main Characters/ninjaFrog/ninjaFrogAll.png</location>
 		</link>
 		<link>
+			<name>res/pause_menu.png</name>
+			<type>1</type>
+			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Menu/pause_menu.png</location>
+		</link>
+		<link>
 			<name>res/terrain.png</name>
 			<type>1</type>
 			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Terrain/terrain.png</location>
