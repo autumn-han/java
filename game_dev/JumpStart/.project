@@ -26,6 +26,11 @@
 			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Terrain/level_one_data.png</location>
 		</link>
 		<link>
+			<name>res/menu_background.png</name>
+			<type>1</type>
+			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Other/menu_background.png</location>
+		</link>
+		<link>
 			<name>res/ninjaFrogAll.png</name>
 			<type>1</type>
 			<location>/Users/Autumn/Pictures/pixelFrog_pixelAdven/Main Characters/ninjaFrog/ninjaFrogAll.png</location>
