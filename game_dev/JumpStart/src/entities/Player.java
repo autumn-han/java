@@ -41,8 +41,8 @@ public class Player extends Entity {
 		setAnimation();		
 	}
 	
-	public void render(Graphics g) {	
-		g.drawImage(ninjaFrogAni[playerAction][ninjaFrogInd], (int) (hitbox.x - xDrawOffset) , (int) (hitbox.y - yDrawOffset), width, height, null);
+	public void render(Graphics g, int xLevelOffset) {	
+		g.drawImage(ninjaFrogAni[playerAction][ninjaFrogInd], (int) (hitbox.x - xDrawOffset) - xLevelOffset, (int) (hitbox.y - yDrawOffset), width, height, null);
 	}
 	
 	private void updateAnimationTick() {	
