@@ -19,9 +19,10 @@ public class HelpMethods {
 		float xIndex = x / Game.TILES_SIZE;
 		float yIndex = y / Game.TILES_SIZE;
 		int value = levelData[(int) yIndex][(int) xIndex];
+		int maxWidth = levelData[0].length * Game.TILES_SIZE;
 		System.out.println("yIndex: " + yIndex + " | xIndex: " + xIndex + " | value: " + value);
 		
-		if (x < 0 || x >= Game.GAME_WIDTH) {
+		if (x < 0 || x >= maxWidth) {
 			return true;
 		}
 		
